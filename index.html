@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <title>Dashboard</title>
+
+</head>
+
+<body>
+
+    <!-- main page layout -->
+    <div class="main-layout d-flex w-100">
+
+        <!-- dashboard icons-->
+        <div class="dashboard d-block w-5" id="dashboard">
+
+            <!-- icons nd user -->
+            <div class="icons cursor-pointer w-5  content-spacebetween d-flex pt-21">
+                <span data-toggle="tooltip" title="Home" onclick="mycontents()"><i class="bi bi-house-door"
+                        id="home"></i></span>
+                <span data-toggle="tooltip" title="Application" onclick="mycontents()"><i class="bi bi-window-sidebar"
+                        id="categories"></i></span>
+                <span data-toggle="tooltip" title="Charts" onclick="mycontents()"><i class="bi bi-graph-up-arrow"
+                        id="graph"></i></span>
+                <span data-toggle="tooltip" title="Tables"><i class="bi bi-table"></i></span>
+                <span data-toggle="tooltip" title="Mode" id="mode-toggle-icon" onclick="lightmode()"> <i
+                        class="bi bi-moon"></i></span>
+                <span data-toggle="tooltip" title="Login-Form" id="login-items" onclick="loginclick()"><i
+                        class="bi bi-box-arrow-in-right"></i></span>
+                <span data-toggle="tooltip" title="User" id="user-id" onclick="myuser()"><i
+                        class="bi bi-person-circle"></i></span>
+                <div class="user-icon">
+                    <img src="user.png" class="w-100">
+                </div>
+            </div>
+        </div>
+
+
+        <!-- popup login/sign up form-->
+        <div class="form-section w-30 self-anchor d-none" id="form-details">
+            <!-- close container -->
+            <div class="closebutton p-13 cursor-pointer fs-25 self-end" onclick="closeclick()">&times;</div>
+            <!-- form -->
+            <div class="formdocument p-15">
+
+                <!-- Login Form -->
+                <div class="form-box" id="box-login">
+                    <h2 class="pb-12 fs-16">Login</h2>
+                    <form action="#">
+                        <div class="input-field pb-5 item-center">
+                            <input class="p-11 w-100 fs-16" type="email" placeholder="Enter Email" id="email" required>
+                        </div>
+                        <div class="input-field pb-5 item-center">
+                            <input class="p-11 w-100 fs-16" type="password" id="password" placeholder="Enter Password"
+                                required>
+                        </div>
+                        <div class="forgot-pass cursor-pointer d-block pb-5 fs-16"> Forgot Password?</div>
+                        <div class="login-button pb-5">
+                            <button class="p-8 cursor-pointer w-100 pb-5" type="submit">Login</button>
+                        </div>
+                        <div class="links pt-14 content-center d-flex">
+                            <span class="icon-item">
+                                <a href="https://accounts.google.com/"><img src="8.png" class="image1 w-100"
+                                        alt="Google Login"></a>
+                            </span>
+                            <span class="icon-item">
+                                <a href="https://www.facebook.com/"><img src="9.png" class="image3 w-100"
+                                        alt="Facebook Login"></a>
+                            </span>
+                        </div>
+                    </form>
+                    <div class="switch-link pt-11 fs-16">
+                        Don't have an account? <a href="#" id="show-signup" class="font-weight">Sign up</a>
+                    </div>
+                </div>
+
+                <!-- popup sign up form -->
+                <!-- Signup Form -->
+                <div class="form-box d-none" id="box-signup">
+                    <h2 class="pb-12 fs-16">Sign Up</h2>
+                    <form action="#">
+                        <div class="input-field pb-5 item-center">
+                            <input class="p-11 w-100 fs-16" type="email" id="email" placeholder="Email" required>
+                        </div>
+                        <div class="input-field pb-5 item-center">
+                            <input class="p-11 w-100 fs-16" type="password" id="password" placeholder="Enter Password"
+                                required>
+                        </div>
+                        <div class="checkbox p-21 d-block pt-11">
+                            <input type="checkbox" required>
+                            <label for="checkbox" class="policy p-8 fs-14">
+                                I have read and agree to <b>Terms</b> and <b>Conditions</b>
+                            </label>
+                        </div>
+                        <div class="login-button pb-5">
+                            <button class="p-8 cursor-pointer w-100 pb-5" type="submit">Create Account</button>
+                        </div>
+                    </form>
+                    <div class="switch-link pt-11 fs-16">
+                        Already have an account? <a href="#" id="show-login" class="font-weight">Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- main container dashboard -->
+        <div class="main-container d-flex w-95">
+
+
+            <!-- dashboard contents -->
+            <div class="container item-center w-20" id="container-bar">
+
+                <!-- heading -->
+                <h3 class="font-weight self-center pt-23">Dashboard</h3>
+
+                <!-- content1 -->
+                <ul class="contents item-left pt-21" id="content-items">
+
+                    <div class="contents-list pt-50">
+                        <li class="p-25 item-left fs-16"><a href="#"><i class="bi bi-clipboard2-pulse-fill"></i> &nbsp;
+                                Sales</a></li>
+                        <li class="p-25 item-left fs-16"><a href="#"><i class="bi bi-pie-chart"></i> &nbsp;
+                                Analytics</a>
+                        </li>
+                        <li class="p-25 item-left fs-16"><a href="#"><i class="bi bi-person-circle"></i> &nbsp; CRM</a>
+                        </li>
+                        <li class="p-25 item-left fs-16"><a href="#"><i class="bi bi-file-earmark-text"></i> &nbsp;
+                                Projects</a>
+                        </li>
+                        <li class="p-25 item-left fs-16"><a href="#"><i class="bi bi-journals"></i> &nbsp; Courses</a>
+                        </li>
+                        <li class="p-25 item-left fs-16"><a href="#"><i class="bi bi-graph-up"></i> &nbsp; Stocks</a>
+                        </li>
+                        <li class="p-25 item-left fs-16"><a href="#"><i class="bi bi-file-earmark-lock"></i> &nbsp;
+                                Jobs</a>
+                        </li>
+                        <li class="p-25 item-left fs-16" id="pos-system" onclick="myuser()"><a href="#"><i
+                                    class="bi bi-basket"></i> &nbsp; POS
+                                System</a></li>
+                    </div>
+                </ul>
+
+                <!-- content2 -->
+                <ul class="application item-left d-none pt-21" id="application-items">
+
+                    <div class="contents-list pt-50">
+                        <li class="p-25 item-left fs-16"><a href="#"><i class="bi bi-bar-chart"></i> &nbsp; Chart</a>
+                        </li>
+                        <li class="p-25 item-left fs-16"><a href="#"><i class="bi bi-envelope-fill"></i> &nbsp;
+                                Email</a>
+                        </li>
+                        <li class="p-25 item-left fs-16"><a href="#"><i class="bi bi-folder-fill"></i> &nbsp; File
+                                Manager</a>
+                        </li>
+                        <li class="p-25 item-left fs-16"><a href="#"><i class="bi bi-list-task"></i> &nbsp; Task</a>
+                        </li>
+                        <li class="p-25 item-left fs-16"><a href="#"><i class="bi bi-images"></i> &nbsp; Gallery</a>
+                        </li>
+                    </div>
+                </ul>
+
+                <!-- content3 -->
+                <ul class="charts item-left d-none pt-21" id="chart-items">
+
+                    <div class="contents-list pt-50">
+                        <li class="p-25 item-left fs-16"><a href="#">Line Charts</a></li>
+                        <li class="p-25 item-left fs-16"><a href="#">Bar Charts </a></li>
+                        <li class="p-25 item-left fs-16"><a href="#">Mixed Charts </a></li>
+                        <li class="p-25 item-left fs-16"><a href="#"> Bubble Charts </a></li>
+                        <li class="p-25 item-left fs-16"><a href="#"> Timeline Charts</a></li>
+                        <li class="p-25 item-left fs-16"><a href=""> Area Charts</a></li>
+                    </div>
+                </ul>
+            </div>
+
+            <!-- container including navigation and data -->
+            <div class="main-Block d-block w-85" id="right-pannel">
+
+                <!-- nav bar  -->
+                <div class="navigation p-21 d-flex w-100 content-spacebetween">
+
+                    <!-- leftnav -->
+                    <div class="top-left d-block">
+                        <div class="leftblock d-flex">
+                            <i class="bi bi-list fs-25 cursor-pointer" id="togglebar"></i>
+                            <div class="search p-8 content-end d-flex w-100">
+                                <input type="text" placeholder="Search" class="w-100"><i class="bi bi-search pt-3 p-6"
+                                    style="position: absolute;"></i>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- rightnav -->
+                    <div class="top-right cursor-pointer d-block">
+
+                        <!-- dropdowns menu -->
+                        <div id="rightblock" class="d-flex">
+
+                            <!-- languages -->
+                            <div class="languagedrop d-block">
+                                <span id="dropdown" onclick="mynavigation()" class="p-15"><i
+                                        class="bi bi-yin-yang fs-19"></i></span>
+                                <div class="drop-menu w-225 self-end fs-16 d-none" id="dropmenu">
+
+                                    <div class="dropmenu-content">
+                                        <span class="p-15"><a href="#" class="fs-16">English</a></span>
+                                        <span class="p-15"><a href="#" class="fs-16">Hindi</a></span>
+                                        <span class="p-15"><a href="#" class="fs-16">French</a></span>
+                                        <span class="p-15"><a href="#" class="fs-16">Spanish</a></span>
+                                        <span class="p-15"><a href="#" class="fs-16">Japanese</a></span>
+                                        <span class="p-15"><a href="#" class="fs-16">Arabic</a></span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!-- cart -->
+                            <div class="cart-items d-block">
+                                <span onclick="mynavigation()" id="cart" class="p-15"><i
+                                        class="bi bi-cart-dash fs-19"></i></span>
+                                <div class="cart-menu w-850 self-end fs-16 d-none" id="cartmenu">
+
+                                    <div class="cartmenu-content">
+                                        <div class="titlebar1 p-17 d-flex">
+                                            <h4 style="font-size: var(--font-size);">Cart menu</h4>
+                                            <a href="#" style="font-size: var(--font-size);">continue
+                                                shopping <i class="bi bi-arrow-right"></i></a>
+                                        </div>
+
+                                        <div class="cart-list w-100" id="items" onclick="addrow()"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!-- notifications -->
+                            <div class="notify-ring d-block">
+                                <span onclick="mynavigation()" id="notify" class="p-15"><i
+                                        class="bi bi-bell fs-19"></i></span>
+                                <div class="notify-menu w-750 self-end fs-16 d-none" id="notifymenu">
+
+                                    <div class="notifymenu-content">
+                                        <div class="titlebar2 p-8 d-flex">
+                                            <h5 style="font-size: var(--font-size);">Notifications
+                                            </h5>
+                                            <a href="#" style="font-size: var(--font-size);">Clear All</a>
+                                        </div>
+
+                                        <div class="notify-list w-100" id="rings" onclick="notifybar()"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!-- full screen -->
+                            <span onclick="myscreen()" class="p-15"><i class="bi bi-fullscreen fs-19"
+                                    id="fullscreenButton"></i></span>
+
+
+                            <!-- profile -->
+                            <div class="profile-item d-block">
+                                <span onclick="mynavigation()" id="profile" class="p-15"> <i
+                                        class="bi bi-person-lines-fill fs-19"></i></span>
+                                <div class="profile-menu self-end fs-16 d-none" id="profilemenu">
+
+                                    <div class="profile-content">
+                                        <div class="titlebar3 p-13 d-flex">
+                                            <h5 style="font-size: var(--font-size);"> Profile</h5>
+                                            <p style="font-size: var(--font-size);"><i class="bi bi-gear-fill"></i>
+                                            </p>
+                                        </div>
+
+                                        <div class="profile-list w-100" id="description" onclick="profilebar()">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!-- settings -->
+                            <span class="p-15" id="settings-toggle" onclick="mysettings()"><i
+                                    class="bi bi-gear fs-19"></i></span>
+                            <div class="settings-menu w-25 d-none" id="settingmenu">
+
+                                <div class="settings-box">
+
+                                    <!-- close container -->
+                                    <div class="closebutton2 fs-25 cursor-pointer self-end d-block"
+                                        onclick="closesettings()">
+                                        &times;</div>
+
+                                    <!-- title-->
+                                    <div class="titlebar4 p-15 d-flex">
+                                        <h4>Settings</h4>
+                                    </div>
+
+                                    <div class="settings-content">
+
+                                        <div class="user-settings pt-21 d-block">
+                                            <ul class="setting-list"></ul>
+
+                                            <!--general settings  -->
+                                            <li class="fs-19 p-15" id="general-elements" onclick="settingmenu()">
+                                                General
+                                                &nbsp;<i class="bi bi-chevron-right fs-15"></i></li>
+                                            <div class="general-settings fs-16" id="setting-description">
+                                            </div>
+
+                                            <!-- personal settings -->
+                                            <li class="fs-19 p-15" id="personal-elements" onclick="personalmenu()">
+                                                Personal
+                                                Info &nbsp;<i class="bi bi-chevron-right fs-15"></i></li>
+                                            <div class="personal-settings fs-16" id="personal-description">
+                                            </div>
+
+                                            <!-- notification settings -->
+                                            <li class="fs-19 p-15">Notifications</li>
+
+                                            <!-- personalize settings -->
+                                            <li class="fs-19 p-15 ">Appearence and Accesibility</li>
+
+                                            <!-- privacy settings -->
+                                            <li class="fs-19 p-15" id="privacy-elements" onclick="privacymenu()">
+                                                Privacy
+                                                &nbsp;<i class="bi bi-chevron-right fs-15"></i></li>
+                                            <div class="privacy-settings fs-16" id="privacy-description">
+                                            </div>
+
+                                            <!-- contents settings-->
+                                            <li class="fs-19 p-15 ">Pages</li>
+                                            <li class="fs-19 p-15">Forms</li>
+
+                                            <!-- pricing settings -->
+                                            <li class="fs-19 p-15" id="pricing-elements" onclick="pricingmenu()">
+                                                Pricing
+                                                &nbsp;<i class="bi bi-chevron-right fs-15"></i></li>
+                                            <div class="pricing-settings fs-16" id="pricing-description">
+                                            </div>
+
+                                            <!-- terms and conditions -->
+                                            <li class="fs-19 p-15">Terms and Conditions</li>
+
+                                            <!-- theme settings  -->
+                                            <li class="fs-19 p-15" id="theme-elements" onclick="thememenu()">Theme
+                                                Mode
+                                                &nbsp;<i class="bi bi-chevron-right fs-15"></i></li>
+                                            <!-- setting modes -->
+                                            <div class="theme-settings p-13 pl-16 fs-16" id="theme-description">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!-- setting buttons -->
+                                    <div class="setting-buttons p-35 pb-22 d-flex">
+                                        <button class="w-40 p-11 cursor-pointer">Buy Now</button>
+                                        <button class="w-40 p-11 cursor-pointer">Reset</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- dashboard main contents displayed-->
+                <div class="data w-100 " id="data-row">
+
+
+                    <!-- data of user form profile -->
+                    <div class="user-details p-21 w-100" id="userdetails">
+                        <!-- user title -->
+                        <div class="user-data">
+                            <h2 class="pb-12">Profile Settings</h2>
+
+                            <!-- user accounts -->
+                            <div class="user-accounts">
+                                <span class="p-15 font-weight d-block">Accounts</span>
+                                <div class="account-details p-21 d-flex">
+                                    <!-- image uploaded -->
+                                    <img src="user.png" class="user-image w-15" id="uploadimage">
+
+                                    <!-- user profile -->
+                                    <div class="profile-bio d-block">
+                                        <h4 class="pl-16 pt-21">Profile Picture</h4><br>
+
+                                        <!-- profile upload button -->
+                                        <div class="file-upload-wrapper d-flex p-8">
+                                            <label for="myFile" class="file-upload-label p-8 cursor-pointer"
+                                                onclick="upload()">Change
+                                                Picture</label>
+                                            <input type="file" id="myFile" name="filename">
+
+                                            <!-- remove button -->
+                                            <!-- remove updated image button -->
+                                            <label class="file-upload-label p-8 cursor-pointer"
+                                                onclick="removeImage()">Remove</label>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- user form -->
+                                <div class="user-form p-21">
+                                    <form action="/action_page.php " class="d-flex">
+                                        <div class="row1 d-flex">
+                                            <div class="inputfield d-flex">
+                                                <label for="username" class="pb-5 fs-15">User Name:</label>
+                                                <input type="text" id="username" class="p-8 fs-15">
+                                            </div>
+                                            <div class="inputfield d-flex">
+                                                <label for="email" class="pb-5 fs-15">Email:</label>
+                                                <input type="email" id="email" class="p-8 fs-15">
+                                            </div>
+                                        </div>
+
+                                        <div class="row2 d-flex">
+                                            <div class="inputfield d-flex">
+                                                <label for="phone" class="pb-5 fs-15">Phone Number:</label>
+                                                <input type="text" id="phone" class="p-8 fs-15">
+                                            </div>
+                                            <div class="inputfield d-flex">
+                                                <label for="age" class="pb-5 fs-15">Age:</label>
+                                                <input type="text" id="age" class="p-8 fs-15">
+                                            </div>
+                                            <div class="inputfield d-flex">
+                                                <label for="designation" class="pb-5 fs-15">Designation:</label>
+                                                <input type="text" id="designation" class="p-8 fs-15">
+                                            </div>
+                                        </div>
+
+                                        <div class="inputfield fullwidth w-100 ">
+                                            <label for="address" class="pb-5 fs-15">Address:</label>
+                                            <input type="text" id="address" class="p-8 fs-15 w-100 pt-9">
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+
+                            <!-- user password -->
+                            <div class="user-passwords">
+                                <span class="p-15 font-weight d-block">Change Password</span>
+
+                                <!-- password form-->
+                                <div class="user-form p-21">
+                                    <form action="/action_page.php">
+                                        <div class="row">
+                                            <div class="inputfield2 pb-22 fs-15 d-flex">
+                                                <label for="username" class="pb-5">New Password:</label>
+                                                <input type="text" class="p-8 fs-15">
+                                            </div>
+                                            <div class="inputfield2 pb-22 fs-15 d-flex">
+                                                <label for="email" class="pb-5">Confirm Password:</label>
+                                                <input type="email" class="p-8 fs-15">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <!-- user notifications -->
+                            <div class="user-notifications">
+                                <span class="p-15 font-weight d-block">Notifications</span>
+                            </div>
+
+                            <!-- user notification title -->
+                            <div class="notification-menu p-21 d-block">
+                                <h4 class="pl-16">Configure Notifications</h4>
+                                <p class="pl-16">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    Dolorum?Lorem, ipsum dolor.</p>
+                                <div class="notification-box d-block">
+
+                                    <!-- user notification contents -->
+                                    <div class="notification-bar p-15 content-spacebetween d-flex">
+                                        <h4>In-App Notifications </h4>
+
+                                        <!-- notification buttons -->
+                                        <div class="pushtoggle">
+                                            <label class="switch d-block">
+                                                <input type="checkbox" id="toggleSwitch" class="d-none">
+                                                <div
+                                                    class="slider w-100 font-weight cursor-pointer content-spacebetween fs-14 pr-7 p-8 d-flex">
+                                                    <span class="label-on">ON</span>
+                                                    <span class="label-off">OFF</span>
+                                                    <div class="knob p-15"></div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="notification-bar p-15 content-spacebetween d-flex ">
+                                        <h4>Email Notifications </h4>
+
+                                        <!-- notification buttons -->
+                                        <div class="pushtoggle">
+                                            <label class="switch d-block">
+                                                <input type="checkbox" id="toggleSwitch" class="d-none">
+                                                <div
+                                                    class="slider w-100 font-weight cursor-pointer content-spacebetween fs-14 pr-7 p-8 d-flex">
+                                                    <span class="label-on">ON</span>
+                                                    <span class="label-off">OFF</span>
+                                                    <div class="knob p-15"></div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="notification-bar p-15 content-spacebetween d-flex">
+                                        <h4>Push Notifications </h4>
+
+                                        <!-- notification buttons -->
+                                        <div class="pushtoggle">
+                                            <label class="switch d-block">
+                                                <input type="checkbox" id="toggleSwitch" class="d-none">
+                                                <div
+                                                    class="slider w-100 font-weight cursor-pointer content-spacebetween fs-14 pr-7 p-8 d-flex">
+                                                    <span class="label-on">ON</span>
+                                                    <span class="label-off">OFF</span>
+                                                    <div class="knob p-15"></div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="notification-bar p-15 content-spacebetween d-flex">
+                                        <h4>SMS Notifications </h4>
+
+                                        <!-- notification buttons -->
+                                        <div class="pushtoggle">
+                                            <label class="switch d-block">
+                                                <input type="checkbox" id="toggleSwitch" class="d-none">
+                                                <div
+                                                    class="slider w-100 font-weight cursor-pointer content-spacebetween fs-14 pr-7 p-8 d-flex">
+                                                    <span class="label-on">ON</span>
+                                                    <span class="label-off">OFF</span>
+                                                    <div class="knob p-15"></div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--data of food delivery bar -->
+                    <div class="orders-system p-21 w-100 d-none" id="ordersystem">
+
+                        <!-- food orders container-->
+                        <!-- order title -->
+                        <div class="order-data">
+                            <h2 class="pb-12">POS System</h2>
+
+                            <!-- orders dashboard-->
+                            <div class="order-box d-flex">
+
+                                <!-- orders container -->
+                                <div class="order-container w-70">
+                                    <span class="p-15 font-weight d-block fs-larger">Orders</span>
+
+                                    <!-- ongoing orders section -->
+                                    <div class="carousel-wrapper w-100">
+                                        <div class="carousel-track d-flex" id="ordercontents" onclick="orderbar()">
+                                        </div>
+                                    </div>
+
+
+
+                                    <!-- categories of orders section -->
+
+                                    <!-- heading -->
+                                    <span class="p-15 font-weight  d-flex content-spacebetween fs-larger">Categories
+                                        <p class="fs-smaller cursor-pointer" style="color: var(--button-color);">
+                                            View
+                                            All &nbsp;<i class="bi bi-arrow-right"></i></p>
+                                    </span>
+
+                                    <!-- flex options menu -->
+                                    <div class="order-category">
+
+                                        <div class="category-items d-flex">
+                                            <span class="d-flex p-8"><img src="1.jpeg"
+                                                    class="food-icons w-40">All</span>
+                                            <span class="d-flex p-8"><img src="2.jpg"
+                                                    class="food-icons">Apetizers</span>
+                                            <span class="d-flex p-8"><img src="10.jpg"
+                                                    class="food-icons w-40">Main
+                                                Course</span>
+                                            <span class="d-flex p-8"><img src="11.jpg" class="food-icons w-40">
+                                                Beverages</span>
+                                            <span class="d-flex p-8"><img src="12.jpeg" class="food-icons w-40">
+                                                Desserts</span>
+                                            <span class="d-flex p-8"><img src="13.jpg" class="food-icons w-40">
+                                                Salad</span>
+                                        </div>
+
+                                        <!-- list of menu options for order -->
+                                        <div class="category-menublock p-11">
+                                            <!-- category menu -->
+
+                                            <!-- first category block -->
+                                            <div class="category-menu d-flex pt-9 pb-35">
+
+                                                <!-- 1 menu block -->
+                                                <div class="menu-block d-block item-center w-35">
+                                                    <img src="4.jpeg" class="w-100">
+                                                    <!-- description -->
+                                                    <div class="menu-content d-block fs-larger p-6">
+                                                        <p>Cheese Burst Pizza</p>
+                                                        <div class="rates d-flex fs-medium">
+                                                            <p>$ 14.99 </p>
+                                                            <p> <del>$ 24.99</del></p>
+                                                        </div>
+                                                    </div>
+                                                    <!-- add button -->
+                                                    <div class="additembutton pb-12" id="add-menu">
+                                                        <button type="button" class="p-6 fs-smaller cursor-pointer"
+                                                            onclick="myorders(this)">Add Item <i
+                                                                class="bi bi-plus"></i></button>
+                                                    </div>
+                                                </div>
+
+
+                                                <!-- 2 menu block -->
+                                                <div class="menu-block d-block item-center w-35">
+                                                    <img src="12.jpeg" class="w-100">
+                                                    <!-- description -->
+                                                    <div class="menu-content d-block fs-larger p-6">
+                                                        <p>Strawberry Drink</p>
+                                                        <div class="rates d-flex fs-medium">
+                                                            <p>$ 21.99 </p>
+                                                            <p> <del>$ 30.99</del></p>
+                                                        </div>
+                                                    </div>
+                                                    <!-- add button -->
+                                                    <div class="additembutton pb-12" id="add-menu">
+                                                        <button type="button" class="p-6 fs-smaller cursor-pointer"
+                                                            onclick="myorders(this)">Add Item <i
+                                                                class="bi bi-plus"></i></button>
+                                                    </div>
+                                                </div>
+
+
+                                                <!-- 3 menu block -->
+                                                <div class="menu-block d-block item-center w-35">
+                                                    <img src="13.jpg" class="w-100">
+                                                    <!-- description -->
+                                                    <div class="menu-content d-block fs-larger p-6">
+                                                        <p>Crispy Cucumber Salad</p>
+                                                        <div class="rates d-flex fs-medium">
+                                                            <p>$ 12.99 </p>
+                                                            <p> <del>$ 19.99</del></p>
+                                                        </div>
+                                                    </div>
+                                                    <!-- add button -->
+                                                    <div class="additembutton pb-12" id="add-menu">
+                                                        <button type="button" class="p-6 fs-smaller cursor-pointer"
+                                                            onclick="myorders(this)">Add Item <i
+                                                                class="bi bi-plus"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+
+                                            <!-- second category block -->
+                                            <div class="category-menu d-flex pt-9 pb-35">
+                                                <!-- 1 menu block -->
+                                                <div class="menu-block d-block item-center w-35">
+                                                    <img src="6.jpeg" class="w-100">
+                                                    <!-- description -->
+                                                    <div class="menu-content d-block fs-larger p-6">
+                                                        <p>Combo Meal</p>
+                                                        <div class="rates d-flex fs-medium">
+                                                            <p>$ 40.99 </p>
+                                                            <p> <del>$ 48.99</del></p>
+                                                        </div>
+                                                    </div>
+                                                    <!-- add button -->
+                                                    <div class="additembutton pb-12" id="add-menu">
+                                                        <button type="button" class="p-6 fs-smaller cursor-pointer"
+                                                            onclick="myorders(this)">Add Item <i
+                                                                class="bi bi-plus"></i></button>
+                                                    </div>
+                                                </div>
+
+
+                                                <!-- 2 menu block -->
+                                                <div class="menu-block d-block item-center w-35">
+                                                    <img src="2.jpg" class="w-100">
+                                                    <!-- description -->
+                                                    <div class="menu-content d-block fs-larger p-6">
+                                                        <p>Kathi Rolls</p>
+                                                        <div class="rates d-flex fs-medium">
+                                                            <p>$ 10.99 </p>
+                                                            <p> <del>$ 12.99</del></p>
+                                                        </div>
+                                                    </div>
+                                                    <!-- add button -->
+                                                    <div class="additembutton pb-12" id="add-menu">
+                                                        <button type="button" class="p-6 fs-smaller cursor-pointer"
+                                                            onclick="myorders(this)">Add Item <i
+                                                                class="bi bi-plus"></i></button>
+                                                    </div>
+                                                </div>
+
+
+                                                <!-- 3 menu block -->
+                                                <div class="menu-block d-block item-center w-35">
+                                                    <img src="10.jpg" class="w-100">
+                                                    <!-- description -->
+                                                    <div class="menu-content d-block fs-larger p-6">
+                                                        <p>Peri Peri Fries</p>
+                                                        <div class="rates d-flex fs-medium">
+                                                            <p>$ 15.99 </p>
+                                                            <p> <del>$ 18.99</del></p>
+                                                        </div>
+                                                    </div>
+                                                    <!-- add button -->
+                                                    <div class="additembutton pb-12" id="add-menu">
+                                                        <button type="button" class="p-6 fs-smaller cursor-pointer"
+                                                            onclick="myorders(this)">Add Item <i
+                                                                class="bi bi-plus"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+
+                                            <!-- third category block -->
+                                            <div class="category-menu d-flex pt-9 pb-35">
+
+                                                <!-- 1 menu block -->
+                                                <div class="menu-block d-block item-center w-35">
+                                                    <img src="11.jpg" class="w-100">
+                                                    <!-- description -->
+                                                    <div class="menu-content d-block fs-larger p-6">
+                                                        <p>Mocktails</p>
+                                                        <div class="rates d-flex fs-medium">
+                                                            <p>$ 19.99 </p>
+                                                            <p> <del>$ 20.99</del></p>
+                                                        </div>
+                                                    </div>
+                                                    <!-- add button -->
+                                                    <div class="additembutton pb-12" id="add-menu">
+                                                        <button type="button" class="p-6 fs-smaller cursor-pointer"
+                                                            onclick="myorders(this)">Add Item <i
+                                                                class="bi bi-plus"></i></button>
+                                                    </div>
+                                                </div>
+
+
+                                                <!-- 2 menu block -->
+                                                <div class="menu-block d-block item-center w-35">
+                                                    <img src="14.jpg" class="w-100">
+                                                    <!-- description -->
+                                                    <div class="menu-content d-block fs-larger p-6">
+                                                        <p>Rajasthani Thali</p>
+                                                        <div class="rates d-flex fs-medium">
+                                                            <p>$ 50.99 </p>
+                                                            <p> <del>$ 52.99</del></p>
+                                                        </div>
+                                                    </div>
+                                                    <!-- add button -->
+                                                    <div class="additembutton pb-12" id="add-menu">
+                                                        <button type="button" class="p-6 fs-smaller cursor-pointer"
+                                                            onclick="myorders(this)">Add Item <i
+                                                                class="bi bi-plus"></i></button>
+                                                    </div>
+                                                </div>
+
+
+                                                <!-- 3 menu block -->
+                                                <div class="menu-block d-block item-center w-35">
+                                                    <img src="15.jpg" class="w-100">
+                                                    <!-- description -->
+                                                    <div class="menu-content d-block fs-larger p-6">
+                                                        <p>Sphagetti Combo</p>
+                                                        <div class="rates d-flex fs-medium">
+                                                            <p>$ 39.99 </p>
+                                                            <p> <del>$ 40.99</del></p>
+                                                        </div>
+                                                    </div>
+                                                    <!-- add button -->
+                                                    <div class="additembutton pb-12" id="add-menu">
+                                                        <button type="button" class="p-6 fs-smaller cursor-pointer"
+                                                            onclick="myorders(this)">Add Item <i
+                                                                class="bi bi-plus"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+                                <!-- details of orders section -->
+                                <div class="order-details w-30">
+                                    <span class=" p-15 font-weight d-block">Order Details</span>
+
+                                    <!-- receipient details -->
+                                    <div class="details-info d-block p-15 ">
+                                        <h4> Receipient : John </h4>
+                                        <p class="fs-15"> Mon-2024,Feb 2025 - 12:45 PM</p>
+                                        <p class="fs-15 "> #SPK123665</p>
+                                    </div>
+
+
+                                    <!-- receipient total orders -->
+                                    <div class="order-summary" id="neworders">
+
+                                        <!-- order1 -->
+                                        <div class="detaillist p-13 d-flex" id="order1">
+                                            <img src="6.jpeg" class="menu w-20">
+
+                                            <div class="itemsdetails px-19 d-block w-65">
+                                                <h4>Combo Meal</h4>
+                                                <p>$ 40.99</p>
+
+                                                <div class="addicon content-end d-flex cursor-pointer">
+                                                    <i class="bi bi-plus-square fs-19 increment"></i>
+                                                    <span class="counting-data"> 0 </span>
+                                                    <i class="bi bi-dash-square fs-19 decrement"></i>
+                                                </div>
+                                            </div>
+                                            <!-- Pass `this` into deleteorders() -->
+                                            <i class="bi bi-trash px-34 cursor-pointer"
+                                                onclick="deleteorders(this)"></i>
+                                        </div>
+
+                                        <!-- order2 -->
+                                        <div class="detaillist p-13 d-flex" id="order2">
+                                            <img src="11.jpg" class="menu w-20">
+
+                                            <div class="itemsdetails px-19 d-block w-65">
+                                                <h4>Mocktails</h4>
+                                                <p>$ 19.99</p>
+
+                                                <div class="addicon content-end d-flex cursor-pointer">
+                                                    <i class="bi bi-plus-square fs-19 increment"></i>
+                                                    <span class="counting-data"> 0 </span>
+                                                    <i class="bi bi-dash-square fs-19 decrement"></i>
+                                                </div>
+                                            </div>
+                                            <i class="bi bi-trash px-34 cursor-pointer"
+                                                onclick="deleteorders(this)"></i>
+                                        </div>
+
+                                        <!-- order3 -->
+                                        <div class="detaillist p-13 d-flex" id="order3">
+                                            <img src="6.jpeg" class="menu w-20">
+
+                                            <div class="itemsdetails px-19 d-block w-65">
+                                                <h4>Cheeze Burst Pizza</h4>
+                                                <p>$ 14.99</p>
+
+                                                <div class="addicon content-end d-flex cursor-pointer">
+                                                    <i class="bi bi-plus-square fs-19 increment"></i>
+                                                    <span class="counting-data"> 0 </span>
+                                                    <i class="bi bi-dash-square fs-19 decrement"></i>
+                                                </div>
+                                            </div>
+                                            <i class="bi bi-trash px-34 cursor-pointer"
+                                                onclick="deleteorders(this)"></i>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- bill of orders -->
+                                    <div class="detailstotal d-block p-11">
+                                        <div class="total-items d-flex p-6 content-spacebetween">
+                                            <h4>Subtotal :</h4>
+                                            <p class="subtotal">$ 75.99</p>
+                                        </div>
+                                        <div class="total-items d-flex p-6 content-spacebetween">
+                                            <h4>Packaging :</h4>
+                                            <p class="packaging">+$ 5.00</p>
+                                        </div>
+                                        <div class="total-items d-flex p-6 content-spacebetween">
+                                            <h4>GST :</h4>
+                                            <p class="gst">$ 10.00</p>
+                                        </div>
+                                    </div>
+                                    <div class="total-summary d-flex p-11 content-spacebetween">
+                                        <h4> TOTAL :</h4>
+                                        <p class="grand-total">$ 90.00</p>
+                                    </div>
+
+                                    <!-- receipient payment -->
+                                    <div class="details-payment">
+                                        <span class=" p-15 font-weight d-block">Payment Methods</span>
+                                        <div class="payment-options p-13 cursor-pointer">
+                                            <h4 class="p-8"><i class="bi bi-subtract"></i> &nbsp; Cash</h4>
+                                            <h4 class="p-8"><i class="bi bi-ui-checks-grid"></i> &nbsp; UPI</h4>
+                                            <h4 class="p-8"><i class="bi bi-credit-card"></i> &nbsp; Debit Card</h4>
+                                        </div>
+                                    </div>
+                                    <div class="pay-button w-100">
+                                        <button type="button" class="p-13 cursor-pointer w-100">Pay -
+                                            $90.00</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

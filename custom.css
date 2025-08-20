@@ -1,0 +1,81 @@
+/* buttons in a dashboard */
+
+/* login button for form */
+.login-button button {
+  text-align: var(--text-align);
+  background: var(--titlebar);
+  color: var(--white);
+  border-radius: var(--border-radius);
+}
+
+.login-button button:hover {
+  background: var(--darkblue);
+}
+
+/* settings button */
+.setting-buttons {
+  gap: 34px;
+}
+
+.setting-buttons button {
+  background-color: var(--button-color);
+}
+
+.setting-buttons button:hover {
+  background-color: var(--titlebar);
+}
+
+/* setting close button */
+.closebutton2 {
+  color: var(--white);
+}
+
+
+/* pay buttons */
+.pay-button button {
+  background-color: var(--titlebar);
+}
+
+.pay-button button:hover {
+  background-color: var(--button-color);
+}
+
+
+/* slider button */
+.next-button {
+  position: relative;
+  flex-direction: row;
+}
+
+
+/* ongoing orders review button */
+.order-button button {
+  background-color: var(--hover);
+  border: var(--border-attribute);
+  border-radius: var(--border-radius);
+}
+
+/* food categories buttons */
+.additembutton button {
+  background: var(--titlebar);
+  border-radius: var(--border-radius);
+}
+
+.additembutton button:hover {
+  background-color: var(--button-color);
+  color: var(--text-color);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
